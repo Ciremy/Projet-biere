@@ -1,0 +1,63 @@
+body {
+  background-color: #8c8c93;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  margin: 0;
+  background-image: url("/assets/img/Sans_titre-1.png");
+}
+
+.topnav #myLinks {
+  display: none;
+}
+
+.topnav #myLinks a {
+  text-decoration: none;
+  color: black;
+  padding: 10% 10%;
+  display: flex;
+  font-size: 150%;
+  text-align: center;
+}
+
+.topnav #myLinks a:hover {
+  background-color: grey;
+}
+
+.topnav {
+  width: 25%;
+  height: 100vh;
+  transition: 250ms;
+}
+
+nav img:hover {
+  transform: scale(1.1);
+  transition: 500ms;
+}
+
+nav img {
+  transition: 500ms;
+}
+
+.linkWrapper {
+  height: 100%;
+  display: flex;
+}
+
+.burgir {
+  margin: 10%;
+  height: 10vh;
+  width: 10vh;
+}
+
+.cardContainer {
+  background-color: wheat;
+}
+
+.gloabalWrapper {
+  flex-wrap: wrap;
+  flex-direction: row;
+}
+
+.card {
+  width: 20%;
+}
