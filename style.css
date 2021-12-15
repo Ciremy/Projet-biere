@@ -4,7 +4,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
   margin: 0;
   background-image: url('/assets/img/Sans_titre-1.png');
-  height: 100vh;
 }
 
 .topnav #myLinks {
@@ -58,19 +57,42 @@ nav img {
 .container {
   margin-top: 300px;
   height: 40%;
+  width: 100%;
 }
 
 .cardContainer {
   height: 100%;
   width: 100%;
   display: flex;
-  justify-content: space-evenly;
+  margin-left: 25%;
 }
 
 .card {
   background-color: wheat;
-  width: 15%;
   border-radius: 10px;
   text-align: center;
-  height: 100%;
+  width: 20vh;
+  height: 25vh;
+  margin: 5%;
+}
+
+html{
+  height: 100vh;
+}
+
+@media (max-width: 1200px) {
+
+  .cardContainer {
+    flex-direction: column;
+    margin-left: 40%;
+  }
+  
+  .container{
+    margin-top: 0;
+  }
+
+  .card{
+    justify-content: center;
+    margin: 3%;
+  }
 }
