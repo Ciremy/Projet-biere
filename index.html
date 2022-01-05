@@ -1,7 +1,6 @@
 <!DOCTYPE html>
 <html lang="fr">
     <head>
-        <title>LA ZOUZ</title>
         <meta charset="UTF-8">
         <meta http-equiv="X-UA-Compatible" content="IE=edge">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -9,39 +8,48 @@
         <link href="style.css" rel="stylesheet">
     </head>
     <body>
-            <nav class="topnav" id="navbar">
-                <img class="menuIcon" src="./assets/img/sdvsdff.png" onclick="showMenu()">
-                <div class="linkWrapper" id="myLinks">
-                    <a href="#news">News</a>
-                    <a href="#contact">Contact</a>
-                    <a href="#about">About</a>
-                </div>
-            </nav>
-        <div class="container">
-            <div class="cardContainer">
-                <div class="card" style="background-image: url('./assets/img/shutterstock-1480374329.jpeg')">
-                    <div class="cardContent">
-                        <h3 class="cardHeader">Card 1</h3>
-                        <p class="cardInfo">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <button class="cardButton">Read now</button>
-                    </div>
-                </div>
-                <div class="card" style="background-image: url('./assets/img/shutterstock-1480374329.jpeg')">
-                    <div class="cardContent">
-                        <h3 class="cardHeader">Card 1</h3>
-                        <p class="cardInfo">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <button class="cardButton">Read now</button>
-                    </div>
-                </div>
-                <div class="card" style="background-image: url('./assets/img/tout-savoir-sur-la-biere.jpeg')">
-                    <div class="cardContent">
-                        <h3 class="cardHeader">Card 1</h3>
-                        <p class="cardInfo">Lorem ipsum dolor sit amet consectetur adipisicing elit.</p>
-                        <button class="cardButton">Read now</button>
-                    </div>
-                </div>
+        <nav role="navigation">
+            <div id="menuToggle">
+              <input type="checkbox" />
+              <span></span>
+              <span></span>
+              <span></span>
+              <ul id="menu">
+                <a href="#"><li>Acceuil</li></a>
+                <a href="#"><li>La Brasserie</li></a>
+                <a href="#"><li>Nos Bières</li></a>
+                <a href="#"><li>Contact</li></a>
+              </ul>
             </div>
-        </div>
+          </nav>
+<section class="hero-section">
+  <div class="card-grid">
+    <a class="card" href="#">
+      <div class="card__background" style="background-image: url(./assets/img/background.png)"></div>
+      <div class="card__content">
+        <h3 class="card__heading">La Brasserie</h3>
+      </div>
+    </a>
+    <a class="card" href="#">
+      <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557187666-4fd70cf76254?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
+      <div class="card__content">
+        <h3 class="card__heading">Nos Bières</h3>
+      </div>
+    </a>
+    <a class="card" href="#">
+      <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1556680262-9990363a3e6d?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
+      <div class="card__content">
+        <h3 class="card__heading">Le Concept</h3>
+      </div>
+    </li>
+    <a class="card" href="#">
+      <div class="card__background" style="background-image: url(https://images.unsplash.com/photo-1557004396-66e4174d7bf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
+      <div class="card__content">
+        <h3 class="card__heading">Notre Jeu</h3>
+      </div>
+    </a>
+  <div>
+</section>
     </body>
     <script src="main.js"></script>
 </html>
