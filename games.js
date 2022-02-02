@@ -1,4 +1,4 @@
-let phrases = [ "BITE", "OUAIS FREH", "TA MERE OUAIS" ]
+let phrases = [ "Si tu t'apelles maxime tu peux aller te faire foutre", "OUAIS FREH", "TA MERE OUAIS" ]
 
 random = Math.floor(Math.random()*phrases.length)
 
