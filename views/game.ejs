@@ -1,0 +1,288 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<title>Game</title>
+		<link href="games.css" type="text/css" rel="stylesheet">
+		<style>
+        body {
+		margin: 0px;
+		padding: 0px;
+		color: #cdcdcd;
+		font-family: 'Gill Sans', sans-serif;
+		height: 100%;
+		margin-top: -28px;
+		background-color: rgb(67, 190, 228);
+		background-image: url('https://c4.wallpaperflare.com/wallpaper/907/197/186/wood-wallpaper-preview.jpg');
+		}
+		#menuToggle {
+		display: block;
+		position: relative;
+		top: 50px;
+		left: 50px;
+
+		z-index: 1;
+
+		-webkit-user-select: none;
+		user-select: none;
+		}
+
+		#menuToggle a {
+		text-decoration: none;
+		color: #000;
+
+		transition: color 0.3s ease;
+		}
+		#menuToggle a:hover {
+		color: #4ac3c3;
+		}
+
+		#menuToggle input {
+		display: block;
+		width: 40px;
+		height: 32px;
+		position: absolute;
+		top: -7px;
+		left: -5px;
+
+		cursor: pointer;
+
+		opacity: 0;
+		z-index: 2;
+
+		-webkit-touch-callout: none;
+		}
+
+		#menuToggle span {
+		display: block;
+		width: 33px;
+		height: 4px;
+		margin-bottom: 5px;
+		position: relative;
+
+		background: #cdcdcd;
+		border-radius: 3px;
+
+		z-index: 1;
+
+		transform-origin: 4px 0px;
+
+		transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+		background: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+		}
+
+		#menuToggle span:first-child {
+		transform-origin: 0% 0%;
+		}
+
+		#menuToggle span:nth-last-child(2) {
+		transform-origin: 0% 100%;
+		}
+
+		#menuToggle input:checked ~ span {
+		opacity: 1;
+		transform: rotate(45deg) translate(-2px, -1px);
+		background: #232323;
+		}
+
+		#menuToggle input:checked ~ span:nth-last-child(3) {
+		opacity: 0;
+		transform: rotate(0deg) scale(0.2, 0.2);
+		}
+
+		#menuToggle input:checked ~ span:nth-last-child(2) {
+		transform: rotate(-45deg) translate(0, -1px);
+		}
+
+		#menu {
+		position: absolute;
+		width: 300px;
+		margin: -100px 0 0 -50px;
+		padding: 50px;
+		padding-top: 125px;
+		height: 200vh;
+
+		background: #ff7382;
+		list-style-type: none;
+		-webkit-font-smoothing: antialiased;
+
+		transform-origin: 0% 0%;
+		transform: translate(-100%, 0);
+
+		transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+		}
+
+		#menu li {
+		padding: 15px 0;
+		font-size: 23px;
+		}
+
+		#menuToggle input:checked ~ ul {
+		transform: none;
+		}
+
+		:root {
+		--background-dark: #2d3548;
+		--text-light: rgba(255, 255, 255, 0.6);
+		--text-lighter: rgba(255, 255, 255, 0.9);
+		--spacing-s: 8px;
+		--spacing-m: 16px;
+		--spacing-l: 24px;
+		--spacing-xl: 32px;
+		--spacing-xxl: 64px;
+		--width-container: 1200px;
+		}
+
+		html {
+		height: 100%;
+		font-family: 'Montserrat', sans-serif;
+		font-size: 14px;
+		}
+
+		@media (min-width: 960px) {
+		body {
+			overflow: hidden;
+		}
+		}
+		.card {
+		margin: 20% 12% 0% 12%;
+		background-color: rgb(175 170 168);
+		padding: 100px;
+		border-radius: 10px;
+		margin-top: 100px;
+		}
+		.center_div {
+		opacity: 0.80;
+		background-color: #120203;
+		width: 800px;
+		margin: 0 auto;
+		height: 650px;
+		border-radius: 25px;
+		text-align: center;
+		margin-top: 5%;
+		}
+
+		.game-time {
+		font-size: 30px;
+		padding: 20px;
+		padding-top: 100px;
+		}
+		p {
+		text-align: center;
+		font-size: 22px;
+		}
+        </style>
+	</head>
+	<body>
+		<nav role="navigation">
+			<div id="menuToggle">
+				<input type="checkbox" />
+				<span></span>
+				<span></span>
+				<span></span>
+				<ul id="menu">
+					<a href="/"><li>Acceuil</li></a>
+					<a href="la_brasserie"><li>La Brasserie</li></a>
+					<a href="nos_bieres"><li>Nos Bières</li></a>
+					<a href="contact"><li>Contact</li></a>
+				</ul>
+			</div>
+		</nav>
+		<div class="center_div">
+			<h3 class="game-time">It's time to PLAY</h3>
+			<div class="card">
+				<p id="phrase" style="color:#000"></p>
+			</div>
+			<!-- <script src="../games.js"></script> -->
+			<script>
+				let phrases = [ "Chanter une chanson accapella", 
+								"Chanter une chanson avec de l’eau dans la bouche", 
+								"Chanter une chanson avec des chamallows dans la bouche", 
+								"Chanter une chanson imposée", 
+								"Raconter une blague", 
+								"Raconter une blague dans une autre langue", 
+								"Manger un aliment (piment, moutarde, poivre, oignon…)", 
+								"Boire un verre cul-sec", 
+								"Boire un shooter sans les mains", 
+								"Boire un shooter préparé par le gagnant", 
+								"Enlever un vêtement", 
+								"Mettre ses vêtements à l’envers", 
+								"Porter un déguisement imposé (le costume du looser)", 
+								"Passer le reste de la soirée avec ses chaussettes sur les mains", 
+								"Danser sur une chanson imposée", 
+								"Danser la macarena sur une autre chanson", 
+								"Parler pendant 5 minutes sur un thème imposé", 
+								"Parler dans une autre langue pendant 2 minutes sur un thème imposé", 
+								"Plonger habillé dans une piscine", 
+								"Se bander les yeux pendant un temps imposé (5 minutes, 10 minutes …)", 
+								"Attacher les 2 mains du perdant", 
+								"Attacher 2 perdants ensemble par la main ou la jambe pendant un temps imposé", 
+								"Dormir dans une autre pièce que la chambre (couloir, escalier, terrasse…)", 
+								"Organiser un repas pour le ou les gagnants", 
+								"Payer sa tournée dans un bar", 
+								"Le ou les perdants est/sont à la disposition du ou des gagnants pendant un temps imposé", 
+								"Faire une déclaration d’amour", 
+								"Faire un discours élogieux sur l’amitié", 
+								"Faire une série de pompe", 
+								"Faire un tour de la maison avec le gagnant sur le dos", 
+								"Appeler un numéro au hasard et tenir la conversation le plus longtemps possible", 
+								"Faire une démonstration de air guitare", 
+								"Faire une démonstration de air sexe", 
+								"Interdiction de parler jusqu’à ce que le gagnant l’ait décidé", 
+								"Interdiction de dire “non” de toute la soirée (sinon autre gage)", 
+								"Interdiction de refuser un verre", 
+								"Faire le champ du coq à chaque heure de la soirée", 
+								"Faire le ménage le lendemain de soirée", 
+								"Refaire la scène avec Gandalf du Seigneur des Anneaux “vous ne passerez pas !!!”", 
+								"Se faire épiler une partie du corps", 
+								"Simuler un orgasme", 
+								"Rentrer le plus de chamallows dans la bouche", 
+								"Imiter le cris d'un animal", 
+								"Imiter la gestuelle d'un animal", 
+								"Attacher les jambes du perdant pendant un temps imposé", 
+								"Mettre en scène une expression ou proverbe", 
+								"Devenir le Marjordome de tout le monde", 
+								"S'occuper des vomis", 
+								"Prendre uns photo de tous les invités à leur insu", 
+								"Echanger leurs vêtements (si 2 perdants)", 
+								"Manger une cuillère de cannelle", 
+								"Manger un petit beurre en moins d'une minute", 
+								"Sauter dans un slip (ou short)", 
+								"Appeler une personne inconnue et lui faire dire un mot imposé avant qu'il ne raccroche", 
+								"Appeler une personne inconnue et placer 3 fois un mot imposé avant qu'il raccroche sans les dire à la suite", 
+								"Balancer un dossier sur soi", 
+								"Raconter sa dernière journée en détail", 
+								"Faire un cover sur << J'irais ou tu iras >> (si 2 perdants)", 
+								"Se faire maquiller par une fille (si le perdant est un gars)", 
+								"Se faire maquiller par un mec (si le perdant est une fille)", 
+								"Imiter la personne à sa gauche ou à sa droite", 
+								"Se déplacer en moonwalk", 
+								"Chanter s'il veut s'exprimer", 
+								"Demander l'autorisation pour aller aux toilettes", 
+								"Faire la vaisselle à la fin de la soirée", 
+								"Amener les croissants le lendemain", 
+								"Faire dix tours sur lui-même avec un balai", 
+								"Faire un gage sans que les autres le sache", 
+								"Boire un cocktail préparé par les autres", 
+								"Faire le striker tout nu dans la rue ou le jardin", 
+								"Faire du pole dance autour d'un lampadaire", 
+								"Enlever un vêtement", 
+								"Répéter en double", 
+								"Mettre du vernis sur les mains et pieds (pour les mec)", 
+								"Faire un strip-tease", 
+								"Parler sans utiliser un lettre définie par les autres", 
+								"Parler en chantant", 
+								"Twitter de son compte perso : j'aime secret story", 
+								"Faire la macarena à l'envers", 
+								"Se faire prendre en photo dans une position définie par les autres" ]
+
+				random = Math.floor(Math.random()*phrases.length)
+
+				let card = document.getElementById("phrase")
+				card.innerHTML = phrases[random]
+			</script>
+		</div>
+	</body>
+</html>

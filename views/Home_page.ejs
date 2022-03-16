@@ -1,0 +1,306 @@
+<!DOCTYPE html>
+<html lang="fr">
+	<head>
+		<meta charset="UTF-8">
+		<meta http-equiv="X-UA-Compatible" content="IE=edge">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link href="../assets/style.css" rel="stylesheet" type="text/css">
+		<title>PedoBeer</title>
+		<style>
+		body {
+            margin: 0px;
+            padding: 0px;
+            color: #cdcdcd;
+            font-family: 'Gill Sans', sans-serif;
+            height: 100%;
+            margin-top: -28px;
+            background-color: #5a5359;
+            background-image: url('../assets/img/background.png');
+        }
+          #menuToggle {
+            display: block;
+            position: relative;
+            top: 50px;
+            left: 50px;
+          
+            z-index: 1;
+          
+            -webkit-user-select: none;
+            user-select: none;
+          }
+          
+          #menuToggle a {
+            text-decoration: none;
+            color: #000;
+          
+            transition: color 0.3s ease;
+          }
+          #menuToggle a:hover {
+            color: #4ac3c3;
+          }
+          
+          #menuToggle input {
+            display: block;
+            width: 40px;
+            height: 32px;
+            position: absolute;
+            top: -7px;
+            left: -5px;
+          
+            cursor: pointer;
+          
+            opacity: 0;
+            z-index: 2;
+          
+            -webkit-touch-callout: none;
+          }
+          
+          #menuToggle span {
+            display: block;
+            width: 33px;
+            height: 4px;
+            margin-bottom: 5px;
+            position: relative;
+          
+            background: #cdcdcd;
+            border-radius: 3px;
+          
+            z-index: 1;
+          
+            transform-origin: 4px 0px;
+          
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+            background: 0.5s cubic-bezier(0.77, 0.2, 0.05, 1), opacity 0.55s ease;
+          }
+          
+          #menuToggle span:first-child {
+            transform-origin: 0% 0%;
+          }
+          
+          #menuToggle span:nth-last-child(2) {
+            transform-origin: 0% 100%;
+          }
+          
+          #menuToggle input:checked ~ span {
+            opacity: 1;
+            transform: rotate(45deg) translate(-2px, -1px);
+            background: #232323;
+          }
+          
+          #menuToggle input:checked ~ span:nth-last-child(3) {
+            opacity: 0;
+            transform: rotate(0deg) scale(0.2, 0.2);
+          }
+          
+          #menuToggle input:checked ~ span:nth-last-child(2) {
+            transform: rotate(-45deg) translate(0, -1px);
+          }
+          
+          #menu {
+            position: absolute;
+            width: 300px;
+            margin: -100px 0 0 -50px;
+            padding: 50px;
+            padding-top: 125px;
+            height: 200vh;
+          
+            background: #ff7382;
+            list-style-type: none;
+            -webkit-font-smoothing: antialiased;
+          
+            transform-origin: 0% 0%;
+            transform: translate(-100%, 0);
+          
+            transition: transform 0.5s cubic-bezier(0.77, 0.2, 0.05, 1);
+          }
+          
+          #menu li {
+            padding: 15px 0;
+            font-size: 23px;
+          }
+          
+          #menuToggle input:checked ~ ul {
+            transform: none;
+          }
+          
+          :root {
+            --background-dark: #2d3548;
+            --text-light: rgba(255, 255, 255, 0.6);
+            --text-lighter: rgba(255, 255, 255, 0.9);
+            --spacing-s: 8px;
+            --spacing-m: 16px;
+            --spacing-l: 24px;
+            --spacing-xl: 32px;
+            --spacing-xxl: 64px;
+            --width-container: 1200px;
+          }
+          
+          * {
+            border: 0;
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+          }
+          
+          html {
+            height: 100%;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 14px;
+          }
+          
+          .hero-section {
+            align-items: flex-start;
+            display: flex;
+            min-height: 100%;
+            justify-content: center;
+            padding: var(--spacing-xxl) var(--spacing-l);
+            margin-top: 50px;
+          }
+          
+          .card-grid {
+            display: grid;
+            grid-template-columns: repeat(1, 1fr);
+            grid-column-gap: var(--spacing-l);
+            grid-row-gap: var(--spacing-l);
+            max-width: var(--width-container);
+            width: 100%;
+          }
+          
+          @media (min-width: 540px) {
+            .card-grid {
+              grid-template-columns: repeat(2, 1fr);
+            }
+            .hero-section {
+              margin-top: 10px;
+            }
+          }
+          
+          @media (min-width: 960px) {
+            .card-grid {
+              grid-template-columns: repeat(4, 1fr);
+            }
+            .hero-section {
+              margin-top: 100px;
+            }
+            body {
+              overflow: hidden;
+            }
+          }
+          
+          .card {
+            list-style: none;
+            position: relative;
+            border-radius: 25px;
+          }
+          
+          .card:before {
+            content: '';
+            display: block;
+            padding-bottom: 150%;
+            width: 100%;
+          }
+          
+          .card__background {
+            background-size: cover;
+            background-position: center;
+            border-radius: var(--spacing-l);
+            bottom: 0;
+            filter: brightness(0.75) saturate(1.2) contrast(0.85);
+            left: 0;
+            position: absolute;
+            right: 0;
+            top: 0;
+            transform-origin: center;
+            transform: scale(1) translateZ(0);
+            transition: filter 200ms linear, transform 200ms linear;
+          }
+          
+          .card:hover .card__background {
+            transform: scale(1.05) translateZ(0);
+          }
+          
+          .card-grid:hover > .card:not(:hover) .card__background {
+            filter: brightness(0.5) saturate(0) contrast(1.2) blur(20px);
+          }
+          
+          .card__content {
+            left: 0;
+            padding: var(--spacing-l);
+            position: absolute;
+            top: 0;
+          }
+          
+          .card__category {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: var(--spacing-s);
+            text-transform: uppercase;
+          }
+          
+          .card__heading {
+            color: var(--text-lighter);
+            font-size: 1.9rem;
+            text-shadow: 2px 2px 20px rgba(0, 0, 0, 0.2);
+            line-height: 1.4;
+            word-spacing: 100vw;
+          }
+        </style>
+	</head>
+	<body style="background-image:
+		url('https://c4.wallpaperflare.com/wallpaper/907/197/186/wood-wallpaper-preview.jpg')">
+		<nav role="navigation">
+			<div id="menuToggle">
+				<input type="checkbox" />
+				<span></span>
+				<span></span>
+				<span></span>
+				<ul id="menu">
+					<a href="/"><li>Acceuil</li></a>
+					<a href="la_brasserie"><li>La Brasserie</li></a>
+					<a href="nos_bieres"><li>Nos Bières</li></a>
+					<a href="contact"><li>Contact</li></a>
+				</ul>
+			</div>
+		</nav>
+		<section class="hero-section">
+			<div class="card-grid">
+				<button class="card">
+					<a href="la_brasserie">
+						<div class="card__background" style="background-image:
+							url(https://france3-regions.francetvinfo.fr/image/1RMX7ecSz3NaCP21KBKXR8DkI5U/600x400/regions/2020/06/09/5edf537093d4c_brasserie_-_creditphotoleurelienne-3568849.jpg)"></div>
+						<div class="card__content">
+							<h3 class="card__heading">La Brasserie</h3>
+						</div>
+					</a>
+				</button>
+				<button class="card">
+					<a href="nos_bieres">
+						<div class="card__background" style="background-image:
+							url(https://static.hitek.fr/img/actualite/ill_m/687047842/Fete-de-la-biere-10.jpg)"></div>
+						<div class="card__content">
+							<h3 class="card__heading">Nos Bières</h3>
+						</div>
+					</a>
+				</button>
+				<button class="card">
+					<a href="le_concept">
+						<div class="card__background" style="background-image:
+							url(https://static.unepetitemousse.fr/produits/bieres/bordeaux-beer-factory/herbal-wheat.jpg)"></div>
+						<div class="card__content">
+							<h3 class="card__heading">Le Concept</h3>
+						</div>
+					</a>
+				</button>
+				<button class="card">
+					<a href="game">
+						<div class="card__background" style="background-image:
+							url(https://images.unsplash.com/photo-1557004396-66e4174d7bf6?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=800&q=60)"></div>
+						<div class="card__content">
+							<h3 class="card__heading">Game</h3>
+						</div>
+					</a>
+				</button>
+			</div>
+		</section>
+	</body>
+</html>
